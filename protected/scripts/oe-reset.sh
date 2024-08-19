@@ -234,22 +234,6 @@ while [[ $# -gt 0 ]]; do
     shift # move to next parameter
 done
 
-# If we are checking out new branch,then pass all unprocessed commands to checkout command
-# Else, throw error and list unknown commands
-if [ ${#PARAMS[@]} -gt 0 ]; then
-    if [ "$branch" != "0" ]; then
-        for i in "${PARAMS[@]}"; do
-            checkoutparams="$checkoutparams $i"
-        done
-    else
-        echo "Unknown Parameter(s):"
-        for i in "${PARAMS[@]}"; do
-            echo "$i"
-        done
-        exit 1
-    fi
-fi
-
 if [ $showhelp = 1 ]; then
     echo ""
     echo "DESCRIPTION:"
