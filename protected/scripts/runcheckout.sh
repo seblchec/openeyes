@@ -28,7 +28,7 @@ nosummary=0
 # Set default branch from environment. Else, if in LIVE mode, fall back to master branch. otherwise fallback to develop branch
 defaultbranch=$OE_DEFAULT_BRANCH
 if [ -z $defaultbranch ]; then
-    [[ "${OE_MODE^^}" = "LIVE" || "${OE_MODE^^}" = "TEST" ]] && defaultbranch="master" || defaultbranch="develop"
+    [[ "${OE_MODE^^}" = "LIVE" || "${OE_MODE^^}" = "TEST" ]] && defaultbranch="master" || defaultbranch="master"
 fi
 branch="$defaultbranch"
 fixparams=""
