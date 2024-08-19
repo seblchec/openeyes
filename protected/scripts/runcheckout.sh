@@ -357,48 +357,6 @@ if [ ! "$usessh" == "$previousssh" ]; then
 fi
 ##### END update remote #####
 
-if [ ! "$force" = "1" ]; then
-    echo ""
-    echo "checking for uncommited changes"
-
-    changes=0
-    modulelist=""
-
-    # Note that the "%=*" removes any namespace definitions (i.e, given OphInTesme=\OEModule\OphInTestme\OphInTestme::class, it would only return OphInTestme)
-    for module in "${modules[@]%=*}"; do
-        if [ ! -d "$MODULEROOT/$module" ]; then
-            if [ ! "$module" = "openeyes" ]; then
-                printf "\e[31mModule %s not found\e[0m\n" "$module"
-                break
-            fi
-        fi
-
-        # deal with openeyes not being a real module!
-        if [ "$module" = "openeyes" ]; then MODGITROOT=$WROOT; else MODGITROOT=$MODULEROOT/$module; fi
-
-        # check if this is a git repo (and exists)
-        if [ -d "$MODGITROOT/.git" ]; then
-
-            if ! git -C "$MODGITROOT" diff --quiet; then
-                changes=1
-                modulelist="$modulelist $module"
-            fi
-        fi
-
-    done
-
-    #  If we have unstaged changes, then abort and warn which modules are affected
-    if [ "$changes" = "1" ]; then
-        printf "\e[41m\e[97m  CHECKOUT ABORTED  \e[0m \n"
-        echo "There are uncommitted changes in the following modules: $modulelist"
-        printf "To ignore these changes, run: \e[1m oe-checkout.sh %s -f \e[0m \n" "$branch"
-        echo "Alternatively, manually git reset --hard to ignore, or git stash to keep, etc"
-        printf "\e[41m\e[97m  CHECKOUT ABORTED  \e[0m \n"
-        echo ""
-        exit 1
-    fi
-fi
-
 # make sure modules directory exists
 mkdir -p "$MODULEROOT"
 
