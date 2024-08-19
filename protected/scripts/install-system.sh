@@ -108,13 +108,13 @@ else
 fi
 
 # If we're not in LIVE mode, then also install the dev tools (required for building openeyes)
-[ "$OE_MODE" != "LIVE" ] && bash $SCRIPTDIR/install-dev-tools.sh
+# [ "$OE_MODE" != "LIVE" ] && bash $SCRIPTDIR/install-dev-tools.sh
 
 # Download and install wkhtmltopdf/toimage (needed for printing and lightning viewer)
 # switch to correct wkhtml version based on OS (trusty/xenial/bionic/etc)
 echo -e "\n\nInstalling wkhtmltopdf...\n\n"
 osver=$(lsb_release -rs)
-if [[ "$osver" == "14.04" ]]; then
+if [[ "$osver" == "14.04" ]]; then```
   # Ubuntu 14.04
   sudo wget -O wkhtml.deb https://downloads.wkhtmltopdf.org/0.12/0.12.5/wkhtmltox_0.12.5-1.trusty_amd64.deb
 elif [[ "$osver" == "16.04" ]]; then
@@ -123,6 +123,9 @@ elif [[ "$osver" == "16.04" ]]; then
 elif [[ "$osver" == "18.04" ]]; then
   # Ubuntu 18.04
   sudo wget -O wkhtml.deb https://downloads.wkhtmltopdf.org/0.12/0.12.5/wkhtmltox_0.12.5-1.bionic_amd64.deb
+elif [[ "$osver" == "18.04" ]]; then
+  # Ubuntu 18.04
+  sudo wget -O wkhtml.deb https://downloads.wkhtmltopdf.org/0.12/0.12.5/wkhtmltox_0.12.5-1.trusty_amd64.deb
 fi
 ## TODO: replace with package manager. e.g, https://packagist.org/packages/h4cc/wkhtmltopdf-amd64 and https://packagist.org/packages/h4cc/wkhtmltoimage-amd64
 sudo dpkg -i --force-depends wkhtml.deb || echo -e "\n\nWARNING WARNING WARNING:\n\nUnable to install wkhtmltopdf automatically\nPlease install manually"
