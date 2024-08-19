@@ -125,7 +125,7 @@ elif [[ "$osver" == "18.04" ]]; then
   sudo wget -O wkhtml.deb https://downloads.wkhtmltopdf.org/0.12/0.12.5/wkhtmltox_0.12.5-1.bionic_amd64.deb
 elif [[ "$osver" == "20.04" ]]; then
   # Ubuntu 20.04
-  sudo wget -O wkhtml.deb https://downloads.wkhtmltopdf.org/0.12/0.12.5/wkhtmltox_0.12.5-1.trusty_amd64.deb
+  sudo wget -O wkhtml.deb https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox_0.12.6-1.focal_amd64.deb
 fi
 ## TODO: replace with package manager. e.g, https://packagist.org/packages/h4cc/wkhtmltopdf-amd64 and https://packagist.org/packages/h4cc/wkhtmltoimage-amd64
 sudo dpkg -i --force-depends wkhtml.deb || echo -e "\n\nWARNING WARNING WARNING:\n\nUnable to install wkhtmltopdf automatically\nPlease install manually"
