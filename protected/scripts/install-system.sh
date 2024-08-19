@@ -123,8 +123,8 @@ elif [[ "$osver" == "16.04" ]]; then
 elif [[ "$osver" == "18.04" ]]; then
   # Ubuntu 18.04
   sudo wget -O wkhtml.deb https://downloads.wkhtmltopdf.org/0.12/0.12.5/wkhtmltox_0.12.5-1.bionic_amd64.deb
-elif [[ "$osver" == "18.04" ]]; then
-  # Ubuntu 18.04
+elif [[ "$osver" == "20.04" ]]; then
+  # Ubuntu 20.04
   sudo wget -O wkhtml.deb https://downloads.wkhtmltopdf.org/0.12/0.12.5/wkhtmltox_0.12.5-1.trusty_amd64.deb
 fi
 ## TODO: replace with package manager. e.g, https://packagist.org/packages/h4cc/wkhtmltopdf-amd64 and https://packagist.org/packages/h4cc/wkhtmltoimage-amd64
